@@ -7,49 +7,44 @@ namespace LexiconFirstProgram
         public static void BuyTicket()
         {
             Console.WriteLine("Enter your age in digits");
-
-            int digitAge;
-            do
-            {
-                var age = Console.ReadLine();
-                if (!int.TryParse(age, out digitAge))
-                {
-                    Console.WriteLine("Your input is not an integer. Please enter your age in digits only. Try again.");
-                } else
-                {
-                    break;
-                }
-            } while (true);
-
-            if (digitAge < 20)
-            {
-                if (digitAge <= 5)
-                    Console.WriteLine("Your cinema ticket is free");
-                else
-                    Console.WriteLine("Your have to pay 80 kr for your cinema ticket.");
-            }
+            int digitAge = ReadInt("Your input is not an integer.Please enter your age in digits only.Try again.");
+            
+            if (digitAge <= 5 || digitAge >= 100)
+                Console.WriteLine("Your cinema ticket is free");
+            else if (digitAge < 20)            
+                Console.WriteLine("Your have to pay 80 kr for your cinema ticket.");
             else if (digitAge > 64)
-            {
-                if (digitAge >= 100)
-                    Console.WriteLine("Your cinema ticket is free");
-                else
-                    Console.WriteLine("Your have to pay 90 kr for your cinema ticket.");
-            }
+                Console.WriteLine("Your have to pay 90 kr for your cinema ticket.");
             else
                 Console.WriteLine("Your have to pay the standard price of 120 kr for your cinema ticket.");
         }
 
         public static void Loop10Times()
         {
-            Console.WriteLine("Enter your text to be printed 10 times here");
-            var text = Console.ReadLine();
-            var str = "";
-            for (int i = 1; i <= 10; i++)
+           Console.WriteLine("Enter your text to be printed 10 times here");
+           var text = Console.ReadLine();
+           var str = "";
+           for (int i = 1; i <= 10; i++)
+           {
+               str = str + i + ". " + text + ", ";
+           }
+           int strcounter = str.Length;
+           Console.WriteLine(str.Substring(0, strcounter - 2));
+        }
+        public static int ReadInt(String str)
+        {
+            do
             {
-                str = str + i + ". " + text + ", ";
-            }
-            int strcounter = str.Length;
-            Console.WriteLine(str.Substring(0, strcounter - 2));
+                var i = Console.ReadLine();
+                if (!int.TryParse(i, out int intI))
+                {
+                    Console.WriteLine(str);
+                }
+                else
+                {
+                    return intI;
+                }
+            } while (true);
         }
 
         public static void PrintThirdWord()
@@ -80,23 +75,9 @@ namespace LexiconFirstProgram
 
             while (state)
             {
-                int menu;
-
-                do
-                {
-                    Console.WriteLine("Enter 1 to buy cinema tickets \nEnter 2 to run a loop 10 times \nEnter 3 to get the third word from a sentence \nEnter 0 to exit the program");
-
-                    var choice = Console.ReadLine();
-                    if (!int.TryParse(choice, out menu))
-                    {
-                        Console.WriteLine("Your input is not an integer. Please enter digits only between 0-3. Try again.");
-                    }
-                    else
-                    {
-                        break;
-                    }
-                } while (true);
-
+                Console.WriteLine("Enter 1 to buy cinema tickets \nEnter 2 to run a loop 10 times \nEnter 3 to get the third word from a sentence \nEnter 0 to exit the program");
+                int menu = ReadInt("Your input is not an integer. Please enter digits only between 0-3. Try again.");
+                
                 switch (menu)
                 {
                     case 0:
