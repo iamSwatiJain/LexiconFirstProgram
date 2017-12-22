@@ -31,22 +31,7 @@ namespace LexiconFirstProgram
            int strcounter = str.Length;
            Console.WriteLine(str.Substring(0, strcounter - 2));
         }
-        public static int ReadInt(String str)
-        {
-            do
-            {
-                var i = Console.ReadLine();
-                if (!int.TryParse(i, out int intI))
-                {
-                    Console.WriteLine(str);
-                }
-                else
-                {
-                    return intI;
-                }
-            } while (true);
-        }
-
+       
         public static void PrintThirdWord()
         {
             Console.WriteLine("Enter a string with three or more words.");
@@ -66,6 +51,22 @@ namespace LexiconFirstProgram
             } while (true);
 
             Console.WriteLine("The third word in your string: " + words[2]);
+        }
+
+        public static int ReadInt(String str)
+        {
+            do
+            {
+                var i = Console.ReadLine();
+                if (!int.TryParse(i, out int intI))
+                {
+                    Console.WriteLine(str);
+                }
+                else
+                {
+                    return intI;
+                }
+            } while (true);
         }
 
         static void Main(string[] args)
